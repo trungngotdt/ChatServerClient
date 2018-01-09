@@ -1,0 +1,5 @@
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Message\bin\Debug\Message.dll
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Message\bin\Debug\Message.pdb
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Message\obj\Debug\Message.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Message\obj\Debug\Message.dll
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Message\obj\Debug\Message.pdb

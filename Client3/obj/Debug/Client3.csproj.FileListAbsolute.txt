@@ -1,0 +1,11 @@
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\bin\Debug\Client3.exe.config
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\bin\Debug\Client3.exe
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\bin\Debug\Client3.pdb
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\bin\Debug\Message.dll
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\bin\Debug\Message.pdb
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\obj\Debug\Client3.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\obj\Debug\Client3.Properties.Resources.resources
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\obj\Debug\Client3.csproj.GenerateResource.Cache
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\obj\Debug\Client3.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\obj\Debug\Client3.exe
+C:\Users\Admin\Documents\Visual Studio 2017\Projects\ChatServerClient\Client3\obj\Debug\Client3.pdb

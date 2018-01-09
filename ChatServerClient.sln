@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client2", "Client2\Client2.csproj", "{DD35270B-E68D-4F82-A436-7EF6DCFDF6DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client3", "Client3\Client3.csproj", "{174295B1-4F37-47AC-B7FC-BF68C8A4391F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message", "Message\Message.csproj", "{BED0C164-0567-42D1-AA8C-9B9C03E3A9BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{CB3D41C8-580B-4CAA-8F18-D1707B1E8595}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{01195ECB-BF09-4931-9ACD-91182DFE88BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD35270B-E68D-4F82-A436-7EF6DCFDF6DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD35270B-E68D-4F82-A436-7EF6DCFDF6DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD35270B-E68D-4F82-A436-7EF6DCFDF6DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD35270B-E68D-4F82-A436-7EF6DCFDF6DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{174295B1-4F37-47AC-B7FC-BF68C8A4391F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{174295B1-4F37-47AC-B7FC-BF68C8A4391F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{174295B1-4F37-47AC-B7FC-BF68C8A4391F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{174295B1-4F37-47AC-B7FC-BF68C8A4391F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BED0C164-0567-42D1-AA8C-9B9C03E3A9BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BED0C164-0567-42D1-AA8C-9B9C03E3A9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BED0C164-0567-42D1-AA8C-9B9C03E3A9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BED0C164-0567-42D1-AA8C-9B9C03E3A9BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB3D41C8-580B-4CAA-8F18-D1707B1E8595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB3D41C8-580B-4CAA-8F18-D1707B1E8595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB3D41C8-580B-4CAA-8F18-D1707B1E8595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB3D41C8-580B-4CAA-8F18-D1707B1E8595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01195ECB-BF09-4931-9ACD-91182DFE88BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01195ECB-BF09-4931-9ACD-91182DFE88BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01195ECB-BF09-4931-9ACD-91182DFE88BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01195ECB-BF09-4931-9ACD-91182DFE88BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F1F17C3-060D-4C78-8DF0-EDE9FD3AFAE8}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://ngotrung.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Client2\\Client2.csproj
+		SccProjectName1 = Client2
+		SccLocalPath1 = Client2
+		SccProjectUniqueName2 = Client3\\Client3.csproj
+		SccProjectName2 = Client3
+		SccLocalPath2 = Client3
+		SccProjectUniqueName3 = Message\\Message.csproj
+		SccProjectName3 = Message
+		SccLocalPath3 = Message
+		SccProjectUniqueName4 = Client\\Client.csproj
+		SccProjectName4 = Client
+		SccLocalPath4 = Client
+		SccProjectUniqueName5 = Server\\Server.csproj
+		SccProjectName5 = Server
+		SccLocalPath5 = Server
+	EndGlobalSection
+EndGlobal
