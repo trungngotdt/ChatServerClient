@@ -18,11 +18,61 @@ namespace Client2
 {
     public partial class Server : Form
     {
+        List<Socket> listSocketClient = null;
+        IPEndPoint ipEndPoint = null;
+        Socket socket = null;
+        MessageStruct messageStruct = null;
+        Thread connection = null;
+        Thread receive = null;
+        Thread thread = null;
         public Server()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-            Connection();
+
+            connection = new Thread(() =>
+            {
+                //while (true)
+                {
+                    if (socket!=null&&socket.Connected)
+                    {
+                        //continue;
+                    }
+                    if (receive != null)
+                    {
+
+                        receive.Abort();
+                    }
+                    if (thread != null)
+                    {
+
+                        thread.Abort();
+                    }
+                    if (socket != null)
+                    {
+
+                        socket.Close();
+                    }
+                    Connection();
+                }
+            });
+            connection.IsBackground = true;
+            connection.Start();
+
+        }
+
+        bool IsSocketConnected(Socket s)
+        {
+            if (socket==null)
+            {
+                return false;
+            }
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if ((part1 && part2) || !s.Connected)
+                return false;
+            else
+                return true;
 
         }
 
@@ -36,29 +86,30 @@ namespace Client2
             txtMess.Clear();
         }
 
-        List<Socket> listSocketClient;
-        IPEndPoint ipEndPoint;
-        Socket socket;
-        MessageStruct messageStruct;
         void Connection()
         {
             try
             {
+
                 listSocketClient = new List<Socket>();
                 ipEndPoint = new IPEndPoint(IPAddress.Any, 9999);
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
                 socket.Bind(ipEndPoint);
-                Thread thread = new Thread(() =>
+                thread = new Thread(() =>
                 {
                     try
                     {
+                        while (true)
+                        {
+
                         socket.Listen(100);
                         Socket socketClient = socket.Accept();
                         listSocketClient.Add(socketClient);
-
-                        Thread receive = new Thread(Receive);
+                        
+                        receive = new Thread(Receive);
                         receive.IsBackground = true;
                         receive.Start(socketClient);
+                        }
                     }
                     catch (Exception)
                     {
@@ -93,31 +144,41 @@ namespace Client2
 
         void Receive(object obj)
         {
-            Socket socketClient = obj as Socket;
+                Socket socketClient = obj as Socket;
+            try
+            {
+
             while (true)
             {
+                
                 if (socketClient.Available != 0)
                 {
                     byte[] arrayByte = new byte[1024];
                     socketClient.Receive(arrayByte);
-                    var dataReceive= Deserialize(arrayByte);
+                    var dataReceive = Deserialize(arrayByte);
                     var checkData = dataReceive is String;
-                    if (dataReceive != null&&!checkData)
+                    if (dataReceive != null && !checkData)
                     {
                         messageStruct = (MessageStruct)dataReceive;
                         rtbShowMessage.AppendText($"From : {messageStruct.Sender} : {messageStruct.Contents} \n");
                     }
-                    else if(checkData)
+                    else if (checkData)
                     {
                         bool status = true;
                         if (dataReceive.ToString().Contains("||Close"))
                         {
-                            dataReceive= dataReceive.ToString().Substring(0, dataReceive.ToString().Count() - "||Close".Count());
+                            dataReceive = dataReceive.ToString().Substring(0, dataReceive.ToString().Count() - "||Close".Count());
                             status = false;
                         }
                         AddDataToListView(dataReceive as string, status);
                     }
                 }
+            }
+            }
+            catch (Exception)
+            {
+                listSocketClient.Remove(socketClient);
+                socketClient.Close();
             }
             /*
         try
@@ -130,23 +191,19 @@ namespace Client2
             MessageBox.Show(ex.Message);
         }*/
         }
-        void AddDataToListView(string name,bool status)
+        void AddDataToListView(string name, bool status)
         {
-            ListViewItem listViewItem=null;
-            bool exitsName = lvwUserStatus.Items.OfType<ListViewItem>().ToList().Exists(p => p.Name == name);
-            bool checkStatus = lvwUserStatus.Items.OfType<ListViewItem>().ToList().Exists(p =>  p.Name == name && p.SubItems[1].Text ==( status ? "true" : "false"));
-            if (!checkStatus)
-            {
-                listViewItem = new ListViewItem() { Name = name,Text=name };
-                listViewItem.SubItems.Add(status ? "true" : "false");
+            ListViewItem listViewItem = null;
+            var exitsName = lvwUserStatus.Items.OfType<ListViewItem>().ToList().Where(p => p.Name == name);
 
-            }
-            else if(checkStatus&&exitsName)
+            if (exitsName.Count() > 0 && status == false)
             {
-                lvwUserStatus.Items.OfType<ListViewItem>().ToList().Where(p => p.Name == name).ToList()[0].SubItems[1].Text = status ? "true" : "false";
+                lvwUserStatus.Items.Remove(exitsName.FirstOrDefault());
             }
-            if (listViewItem!=null)
+            if (exitsName.Count() == 0)
             {
+                listViewItem = new ListViewItem() { Name = name, Text = name };
+                listViewItem.SubItems.Add(status ? "true" : "false");
                 lvwUserStatus.Items.Add(listViewItem);
             }
         }
@@ -161,10 +218,8 @@ namespace Client2
 
         object Deserialize(byte[] data)
         {
-
             try
             {
-
                 MemoryStream memoryStream = new MemoryStream(data);
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 return binaryFormatter.Deserialize(memoryStream);
@@ -185,7 +240,7 @@ namespace Client2
         private void Server_Load(object sender, EventArgs e)
         {
             lvwUserStatus.Columns.Add(new ColumnHeader() { Text = "Name" });
-            lvwUserStatus.Columns.Add(new ColumnHeader() { Text = "Status"});
+            lvwUserStatus.Columns.Add(new ColumnHeader() { Text = "Status" });
 
         }
     }

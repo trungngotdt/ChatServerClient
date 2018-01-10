@@ -32,6 +32,7 @@
             this.rtbShowMessage = new System.Windows.Forms.RichTextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.btnConnection = new System.Windows.Forms.Button();
+            this.lvwUserStatus = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // txtMess
@@ -44,9 +45,9 @@
             // 
             // rtbShowMessage
             // 
-            this.rtbShowMessage.Location = new System.Drawing.Point(12, 24);
+            this.rtbShowMessage.Location = new System.Drawing.Point(12, 12);
             this.rtbShowMessage.Name = "rtbShowMessage";
-            this.rtbShowMessage.Size = new System.Drawing.Size(380, 213);
+            this.rtbShowMessage.Size = new System.Drawing.Size(380, 225);
             this.rtbShowMessage.TabIndex = 4;
             this.rtbShowMessage.Text = "";
             // 
@@ -69,11 +70,23 @@
             this.btnConnection.Text = "Connection";
             this.btnConnection.UseVisualStyleBackColor = true;
             // 
+            // lvwUserStatus
+            // 
+            this.lvwUserStatus.FullRowSelect = true;
+            this.lvwUserStatus.GridLines = true;
+            this.lvwUserStatus.Location = new System.Drawing.Point(398, 12);
+            this.lvwUserStatus.Name = "lvwUserStatus";
+            this.lvwUserStatus.Size = new System.Drawing.Size(190, 297);
+            this.lvwUserStatus.TabIndex = 10;
+            this.lvwUserStatus.UseCompatibleStateImageBehavior = false;
+            this.lvwUserStatus.View = System.Windows.Forms.View.Details;
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 323);
+            this.ClientSize = new System.Drawing.Size(602, 323);
+            this.Controls.Add(this.lvwUserStatus);
             this.Controls.Add(this.btnConnection);
             this.Controls.Add(this.txtMess);
             this.Controls.Add(this.rtbShowMessage);
@@ -93,6 +106,7 @@
         private System.Windows.Forms.RichTextBox rtbShowMessage;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnConnection;
+        private System.Windows.Forms.ListView lvwUserStatus;
     }
 }
 

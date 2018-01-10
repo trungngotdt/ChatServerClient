@@ -56,6 +56,8 @@ namespace Client
         void SocketClose()
         {
             socket.Send(Serialize("Client||Close"));
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Disconnect(false);
             socket.Close();
         }
 
@@ -78,12 +80,33 @@ namespace Client
 
                 while (true)
                 {
+                    /*
                     byte[] arrayByte = new byte[1024];
                     socket.Receive(arrayByte);
                     messageStruct = (MessageStruct)Deserialize(arrayByte);
                     if (messageStruct != null)
                     {
                         rtbShowMessage.AppendText($" {messageStruct.Sender} : {messageStruct.Contents} \n");
+                    }
+                    */
+                    byte[] arrayByte = new byte[1024];
+                    socket.Receive(arrayByte);
+                    var dataReceive = Deserialize(arrayByte);
+                    var checkData = dataReceive is String;
+                    if (dataReceive != null && !checkData)
+                    {
+                        messageStruct = (MessageStruct)dataReceive;
+                        rtbShowMessage.AppendText($"From : {messageStruct.Sender} : {messageStruct.Contents} \n");
+                    }
+                    else if (checkData)
+                    {
+                        bool status = true;
+                        if (dataReceive.ToString().Contains("||Close"))
+                        {
+                            dataReceive = dataReceive.ToString().Substring(0, dataReceive.ToString().Count() - "||Close".Count());
+                            status = false;
+                        }
+                        AddDataToListView(dataReceive as string, status);
                     }
                 }
 
@@ -143,6 +166,23 @@ namespace Client
         private void Client_FormClosing(object sender, FormClosingEventArgs e)
         {
             SocketClose();
+        }
+
+        void AddDataToListView(string name, bool status)
+        {
+            ListViewItem listViewItem = null;
+            var exitsName = lvwUserStatus.Items.OfType<ListViewItem>().ToList().Where(p => p.Name == name);
+
+            if (exitsName.Count() > 0 && status == false)
+            {
+                lvwUserStatus.Items.Remove(exitsName.FirstOrDefault());
+            }
+            if (exitsName.Count() == 0)
+            {
+                listViewItem = new ListViewItem() { Name = name, Text = name };
+                listViewItem.SubItems.Add(status ? "true" : "false");
+                lvwUserStatus.Items.Add(listViewItem);
+            }
         }
     }
 }
